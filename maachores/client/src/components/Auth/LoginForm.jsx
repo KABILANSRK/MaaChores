@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import API from "../../api/axios";
 import './LoginForm.css';
 
@@ -18,6 +18,8 @@ function LoginForm() {
             localStorage.setItem("token", res.data.token);
             alert("Login successful!");
             console.log(res.data);
+
+            navigate("/dashboard");
         } catch (err) {
             alert("Login failed: " + err.response.data.message);
             console.error(err);
